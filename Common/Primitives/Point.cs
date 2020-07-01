@@ -5,8 +5,8 @@ namespace Common.Primitives
     public class Point
     {
         private static readonly Random Random = new Random();
-        public float X { get; set; }
-        public float Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
 
         public static Point FindPointBetween(Point a, Point b)
         {
