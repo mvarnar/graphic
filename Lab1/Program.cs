@@ -3,8 +3,9 @@ using System.Drawing;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
+using Point = Lab1.Primitives.Point;
 
-namespace Lab2
+namespace Lab1
 {
     public class Program
     {
@@ -13,7 +14,14 @@ namespace Lab2
 
         public static void Main()
         {
-            using (var window = new Window(Width, Height, "LearnOpenTK"))
+            var points = new[]
+            {
+                Point.GenerateRandomPoint(Width, Height),
+                Point.GenerateRandomPoint(Width, Height),
+                Point.GenerateRandomPoint(Width, Height)
+            };
+
+            using (var window = new Window(Width, Height, "Lab1", points))
             {
                 window.Run(60.0);
             }
@@ -23,12 +31,14 @@ namespace Lab2
         {
             private readonly int _width;
             private readonly int _height;
+            private readonly Point[] _points;
 
-            public Window(int width, int height, string title) : base(width, height,
+            public Window(int width, int height, string title, Point[] points) : base(width, height,
                 GraphicsMode.Default, title)
             {
                 this._width = width;
                 this._height = height;
+                this._points = points;
             }
 
             protected override void OnLoad(EventArgs e)
@@ -37,7 +47,7 @@ namespace Lab2
                 GL.Color3(Color.Black);
                 GL.ClearColor(Color.CornflowerBlue);
                 GL.Clear(ClearBufferMask.ColorBufferBit);
-
+                new Fractal(_points).Draw();
                 SwapBuffers();
 
                 base.OnLoad(e);
