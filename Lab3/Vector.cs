@@ -8,6 +8,11 @@ namespace Lab3
     {
         private readonly Point _origin;
         private readonly Point _vector;
+        public static Vector Up => new Vector(new Point{X=0, Y=0}, new Point{X=0, Y=1});
+        public static Vector Right => new Vector(new Point { X = 0, Y = 0 }, new Point { X = 1, Y = 0 });
+        public static Vector Down => new Vector(new Point { X = 0, Y = 0 }, new Point { X = 0, Y = -1 });
+        public static Vector Left => new Vector(new Point { X = 0, Y = 0 }, new Point { X = -1, Y = 0 });
+
         public double X
         {
             private set => _vector.X = value;
@@ -20,7 +25,7 @@ namespace Lab3
         }
 
         private double Length => Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2));
-        private double Angle => Math.Asin(Y / Length);
+        private double Angle => X >= 0 ? Math.Asin(Y / Length) : Math.PI - Math.Asin(Y / Length);
         private double WingsLength => 0.1 * Length;
 
         public Vector(Point origin, Point vector)
@@ -37,8 +42,22 @@ namespace Lab3
 
         public void Multiply(double value)
         {
-            _vector.X *= value;
-            _vector.Y *= value;
+            X *= value;
+            Y *= value;
+        }
+
+        public void Move(Vector moveVector)
+        {
+            _origin.X += moveVector.X;
+            _origin.Y += moveVector.Y;
+        }
+
+        public void Rotate(double angle)
+        {
+            var oldX = X;
+            var oldY = Y;
+            X = Math.Cos(angle) * oldX - Math.Sin(angle) * oldY;
+            Y = Math.Sin(angle) * oldX + Math.Cos(angle) * oldY;
         }
 
         public void Draw()
