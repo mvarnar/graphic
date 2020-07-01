@@ -3,7 +3,7 @@ using System.Drawing;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using Point = Lab1.Primitives.Point;
+using Point = Common.Primitives.Point;
 
 namespace Lab1
 {

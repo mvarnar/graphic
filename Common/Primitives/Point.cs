@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lab1.Primitives
+namespace Common.Primitives
 {
     public class Point
     {

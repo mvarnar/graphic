@@ -1,5 +1,5 @@
 ﻿using System;
-using Lab1.Primitives;
+using Common.Primitives;
 using OpenTK.Graphics.OpenGL;
 
 namespace Lab1
