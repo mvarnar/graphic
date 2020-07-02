@@ -51,6 +51,8 @@ namespace Lab3
             protected override void OnLoad(EventArgs e)
             {
                 GL.Ortho(0, _width, 0, _height, -1, 1);
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.LoadIdentity();
                 GL.ClearColor(Color.Wheat);
                 GL.Clear(ClearBufferMask.ColorBufferBit);
                 DrawPicture();

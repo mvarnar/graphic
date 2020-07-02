@@ -44,7 +44,7 @@ namespace Lab1
             protected override void OnLoad(EventArgs e)
             {
                 GL.Ortho(0, _width, 0, _height, -1, 1);
-                GL.Color3(Color.Black);
+                
                 GL.ClearColor(Color.CornflowerBlue);
                 GL.Clear(ClearBufferMask.ColorBufferBit);
                 new Fractal(_points).Draw();

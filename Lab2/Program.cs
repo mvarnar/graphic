@@ -23,8 +23,8 @@ namespace Lab2
         {
             private readonly int _width;
             private readonly int _height;
-            private double _lineAngle = Math.PI / 2;
-            private const double LineAngleSpeed = 0.1;
+            private double _lineAngle = Math.PI;
+            private const double LineAngleSpeed = Math.PI / 4;
 
             public Window(int width, int height, string title) : base(width, height,
                 GraphicsMode.Default, title)

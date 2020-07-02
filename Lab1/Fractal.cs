@@ -1,6 +1,7 @@
 ﻿using System;
-using Common.Primitives;
+using System.Drawing;
 using OpenTK.Graphics.OpenGL;
+using Point = Common.Primitives.Point;
 
 namespace Lab1
 {
@@ -23,6 +24,18 @@ namespace Lab1
             var p = _points[random.Next(NumberOfVertices)];
             for (var i = 0; i < NumberOfIterations; i++)
             {
+                if (i % 2 == 0)
+                {
+                    GL.Color3(Color.Red);
+                }
+                else if (i % 3 == 0)
+                {
+                    GL.Color3(Color.Green);
+                }
+                else
+                {
+                    GL.Color3(Color.Blue);
+                }
                 var T = _points[random.Next(NumberOfVertices)];
                 p = Point.FindPointBetween(p, T);
                 GL.Vertex2(p.X, p.Y);

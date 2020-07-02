@@ -54,10 +54,20 @@ namespace Lab3
 
         public void Rotate(double angle)
         {
+            var centerX = (_origin.X + (_origin.X + X)) / 2;
+            var centerY = (_origin.Y + (_origin.Y + Y)) / 2;
+
+            _origin.X = centerX;
+            _origin.Y = centerY;
+
+
             var oldX = X;
             var oldY = Y;
             X = Math.Cos(angle) * oldX - Math.Sin(angle) * oldY;
             Y = Math.Sin(angle) * oldX + Math.Cos(angle) * oldY;
+
+            _origin.X = (2 * _origin.X - X) / 2;
+            _origin.Y = (2 * _origin.Y - Y) / 2;
         }
 
         public void Draw()
