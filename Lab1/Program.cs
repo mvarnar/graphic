@@ -47,6 +47,7 @@ namespace Lab1
                 
                 GL.ClearColor(Color.CornflowerBlue);
                 GL.Clear(ClearBufferMask.ColorBufferBit);
+                GL.PointSize(3);
                 new Fractal(_points).Draw();
                 SwapBuffers();
 

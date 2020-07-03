@@ -24,17 +24,17 @@ namespace Lab1
             var p = _points[random.Next(NumberOfVertices)];
             for (var i = 0; i < NumberOfIterations; i++)
             {
-                if (i % 2 == 0)
+                switch (i % 3)
                 {
-                    GL.Color3(Color.Red);
-                }
-                else if (i % 3 == 0)
-                {
-                    GL.Color3(Color.Green);
-                }
-                else
-                {
-                    GL.Color3(Color.Blue);
+                    case 0: 
+                        GL.Color3(Color.Red);
+                        break;
+                    case 1:
+                        GL.Color3(Color.Green);
+                        break;
+                    case 2:
+                        GL.Color3(Color.Blue);
+                        break;
                 }
                 var T = _points[random.Next(NumberOfVertices)];
                 p = Point.FindPointBetween(p, T);
